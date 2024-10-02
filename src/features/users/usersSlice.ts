@@ -49,7 +49,9 @@ export const fetchUsers = createAsyncThunk(
       const users = await getUsers(params);
       return users;
     } catch (error: unknown) {
-      return rejectWithValue(error?.message || "Error fetching users");
+      return rejectWithValue(
+        (error as Error).message || "Error fetching users"
+      );
     }
   }
 );
