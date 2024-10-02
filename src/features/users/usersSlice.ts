@@ -48,8 +48,8 @@ export const fetchUsers = createAsyncThunk(
     try {
       const users = await getUsers(params);
       return users;
-    } catch (error: any) {
-      return rejectWithValue(error.message || "Error fetching users");
+    } catch (error: unknown) {
+      return rejectWithValue(error?.message || "Error fetching users");
     }
   }
 );
